@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Moisés - Adote uma Criança neste Natal</title>
+    <meta name="description" content="Projeto Moisés: Um gesto de amor ao próximo que transforma vidas em Carapicuíba/SP. Atendemos crianças de 0 a 12 anos.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'moises-navy': '#0F172A',
+                        'moises-blue': '#1E3A8A',
+                        'moises-gold': '#C5A059',
+                        'moises-gold-light': '#E5C585',
+                        'moises-cream': '#F9FAFB',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.7)), url('https://images.pexels.com/photos/207891/pexels-photo-207891.jpeg')",
+                        'parallax-quote': "linear-gradient(to right, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+                        'pattern-dots': "radial-gradient(#C5A059 1px, transparent 1px)",
+                    },
+                    backgroundSize: {
+                        'pattern-dots-size': '20px 20px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F9FAFB;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, #C5A059, #D4AF37);
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 300px;
+        }
+        
+        .accordion-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E3A8A;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A059;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-moises-gold rounded-full flex items-center justify-center text-moises-navy font-bold text-xl shadow-lg group-hover:bg-white transition-colors">
+                    M
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl font-bold tracking-wide leading-none group-hover:text-moises-gold transition-colors">PROJETO</span>
+                    <span class="text-xs tracking-[0.3em] font-light uppercase">Moisés</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#sobre" class="hover:text-moises-gold transition-colors">SOBRE</a>
+                <a href="#como-funciona" class="hover:text-moises-gold transition-colors">COMO FUNCIONA</a>
+                <a href="#parceiro" class="hover:text-moises-gold transition-colors">SEJA PARCEIRO</a>
+                <a href="#galeria" class="hover:text-moises-gold transition-colors">GALERIA</a>
+                <a href="#contato" class="hover:text-moises-gold transition-colors">CONTATO</a>
+                <a href="#doar" class="btn-gold px-6 py-2 rounded-full font-semibold shadow-lg">QUERO DOAR</a>
+            </nav>
+
+            <button id="mobile-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-moises-navy text-white py-6 px-6 shadow-xl border-t border-gray-800">
+            <div class="flex flex-col space-y-4 text-center">
+                <a href="#sobre" class="py-2 border-b border-gray-700 hover:text-moises-gold">SOBRE</a>
+                <a href="#como-funciona" class="py-2 border-b border-gray-700 hover:text-moises-gold">COMO FUNCIONA</a>
+                <a href="#parceiro" class="py-2 border-b border-gray-700 hover:text-moises-gold">SEJA PARCEIRO</a>
+                <a href="#galeria" class="py-2 border-b border-gray-700 hover:text-moises-gold">GALERIA</a>
+                <a href="#contato" class="py-2 border-b border-gray-700 hover:text-moises-gold">CONTATO</a>
+                <a href="#doar" class="btn-gold py-3 rounded mt-2">QUERO DOAR</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center bg-hero-pattern parallax">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-moises-navy/90"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto reveal active">
+            <div class="mb-4 text-moises-gold opacity-90">
+                <i class="fas fa-dove text-3xl animate-pulse"></i>
+            </div>
+            
+            <span class="text-moises-gold tracking-[0.2em] text-sm md:text-base uppercase font-bold mb-4 block">
+                "Deixai vir a mim as crianças..." - Mateus 19:14
+            </span>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Adote uma Criança<br>
+                <span class="text-moises-gold italic font-serif">neste Natal.</span>
+            </h1>
+            <p class="text-gray-200 text-lg md:text-xl mb-10 font-light max-w-2xl mx-auto leading-relaxed">
+                Um gesto de amor ao próximo que transforma vidas em Carapicuíba/SP. Seja um instrumento de Deus na vida de um pequeno.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#doar" class="btn-gold px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
+                    Quero Adotar uma Criança!
+                </a>
+                <a href="#como-funciona" class="px-8 py-4 rounded-full border border-white text-white hover:bg-white hover:text-moises-navy font-semibold transition-all">
+                    Saiba Como Ajudar
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-70">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <div class="bg-moises-navy relative z-20 -mt-2">
+        <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-white border-b border-gray-800">
+            <div class="text-center p-6 reveal">
+                <i class="fas fa-child text-4xl text-moises-gold mb-4"></i>
+                <h3 class="text-2xl font-serif font-bold mb-2">Apoio à Infância</h3>
+                <p class="text-gray-400 text-sm">Cuidado integral para crianças de <strong>0 a 12 anos</strong>.</p>
+            </div>
+            <div class="text-center p-6 reveal border-l-0 md:border-l border-gray-800">
+                <i class="fas fa-hand-holding-heart text-4xl text-moises-gold mb-4"></i>
+                <h3 class="text-2xl font-serif font-bold mb-2">Ações Sociais</h3>
+                <p class="text-gray-400 text-sm">Distribuição de alimentos, sorteios e kits presentes.</p>
+            </div>
+            <div class="text-center p-6 reveal border-l-0 md:border-l border-gray-800">
+                <i class="fas fa-church text-4xl text-moises-gold mb-4"></i>
+                <h3 class="text-2xl font-serif font-bold mb-2">Base Cristã</h3>
+                <p class="text-gray-400 text-sm">Iniciativa missionária da Comunidade Cristã Hadash.</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="sobre" class="py-20 md:py-32 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 relative reveal">
+                    <div class="absolute top-4 -left-4 w-full h-full border-2 border-moises-gold rounded-lg z-0"></div>
+                    <img src="p4.jpg" alt="Crianças do Projeto Moisés" class="relative z-10 rounded-lg shadow-2xl w-full object-cover h-[500px]">
+                </div>
+
+                <div class="w-full lg:w-1/2 reveal">
+                    <span class="text-moises-blue font-bold tracking-widest text-sm uppercase mb-2 block">Quem Somos</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-moises-navy mb-6">Transformando Vidas desde 2018</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        O Projeto Moisés é uma <strong>iniciativa social e missionária</strong> da <strong>Comunidade Cristã Hadash</strong>, nascida na cidade de Carapicuíba, São Paulo.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Atendemos crianças carentes de <strong>0 a 12 anos</strong>. Inspirado na história bíblica de Moisés, nosso propósito é levar esperança e dignidade. Além da entrega de presentes, realizamos sorteios, entrega de alimentos e ações missionárias ao longo do ano.
+                    </p>
+                    
+                    <div class="bg-moises-cream p-6 rounded-lg border-l-4 border-moises-gold mt-6">
+                        <h4 class="font-bold text-moises-navy mb-2">Nossa Missão</h4>
+                        <p class="text-gray-600 italic">Atender crianças em situação de vulnerabilidade, proporcionando um Natal mais alegre com a doação de um kit presente completo (roupa, calçado e brinquedo).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lideranca" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center reveal">
+            <span class="text-moises-blue font-bold tracking-widest text-sm uppercase mb-2 block">Quem Faz Acontecer</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-moises-navy mb-12">Nossa Liderança e Equipe</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg mb-6 border-4 border-moises-gold/20 h-72">
+                        <img src="https://i.ibb.co/9HK3qMW6/c2.jpg" alt="Pr. Diego Souza e Pra. Renata Souza" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-moises-navy mb-1">Pr. Diego Souza e Pra. Renata Souza</h3>
+                    <p class="text-gray-600 text-sm">Coordenadores e Pastores</p>
+                    <div class="w-12 h-1 bg-moises-gold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg mb-6 border-4 border-moises-blue/20">
+                        <img src="https://i.ibb.co/k2PyBcCM/e1.jpg" alt="Equipe Projeto Moisés" class="w-full h-auto object-contain">
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-moises-navy mb-1">Nossa Equipe</h3>
+                    <p class="text-gray-600 text-sm">Voluntários Dedicados</p>
+                    <div class="w-12 h-1 bg-moises-blue mx-auto mt-4 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-moises-gold font-bold tracking-widest text-sm uppercase">Processo de Adoção</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-moises-navy mt-2">O Ciclo da Esperança</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">O projeto opera em fases: cadastro, ações contínuas (sorteios e alimentos) e a grande entrega em dezembro.</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between mb-12 reveal">
+                    <div class="w-full md:w-5/12 text-center md:text-right order-2 md:order-1 mt-4 md:mt-0 px-4 md:px-0">
+                        <span class="text-moises-gold font-bold text-xl block">1. Cadastro e Ações</span>
+                        <h3 class="font-serif font-bold text-lg text-moises-navy">Primeira Fase</h3>
+                        <p class="text-gray-600 text-sm mt-2">As crianças (0 a 12 anos) são cadastradas na igreja. Em seguida, realizamos ações como sorteios, entrega de alimentos e atividades missionárias.</p>
+                    </div>
+                    <div class="w-8 h-8 bg-moises-gold rounded-full border-4 border-white shadow-lg z-10 order-1 md:order-2 mx-auto flex items-center justify-center text-xs text-white font-bold"><i class="fas fa-file-alt"></i></div>
+                    <div class="hidden md:block md:w-5/12 order-3"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between mb-12 reveal">
+                    <div class="hidden md:block md:w-5/12 order-1"></div>
+                    <div class="w-8 h-8 bg-moises-blue rounded-full border-4 border-white shadow-lg z-10 order-1 md:order-2 mx-auto flex items-center justify-center text-xs text-white font-bold"><i class="fas fa-gift"></i></div>
+                    <div class="w-full md:w-5/12 text-center md:text-left order-2 md:order-3 mt-4 md:mt-0 px-4 md:px-0">
+                        <span class="text-moises-blue font-bold text-xl block">2. Adoção</span>
+                        <h3 class="font-serif font-bold text-lg text-moises-navy">O Compromisso</h3>
+                        <p class="text-gray-600 text-sm mt-2">O Adotante se compromete a entregar o Kit Presente NOVO até a data estipulada (geralmente em novembro), garantindo que tudo esteja pronto para o Natal.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between reveal">
+                    <div class="w-full md:w-5/12 text-center md:text-right order-2 md:order-1 mt-4 md:mt-0 px-4 md:px-0">
+                        <span class="text-moises-gold font-bold text-xl block">3. Entrega</span>
+                        <h3 class="font-serif font-bold text-lg text-moises-navy">A Grande Celebração</h3>
+                        <p class="text-gray-600 text-sm mt-2">Acontece em dezembro, durante os emocionantes Cultos da Entrega. Realizada pelos voluntários, com a participação dos adotantes para conhecer a criança.</p>
+                    </div>
+                    <div class="w-8 h-8 bg-moises-gold rounded-full border-4 border-white shadow-lg z-10 order-1 md:order-2 mx-auto flex items-center justify-center text-xs text-white font-bold"><i class="fas fa-heart"></i></div>
+                    <div class="hidden md:block md:w-5/12 order-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parceiro" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-moises-blue font-bold tracking-widest text-sm uppercase">Participe</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-moises-navy mt-2">Como Você Pode Fazer a Diferença</h2>
+                <div class="w-24 h-1 bg-moises-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-600 mt-4">Você pode ajudar sendo um adotante ou um parceiro nos sorteios e doações.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300 reveal">
+                    <div class="bg-moises-navy p-6 text-center text-white relative overflow-hidden">
+                        <div class="absolute inset-0 bg-pattern-dots opacity-10"></div>
+                        <i class="fas fa-gift text-4xl mb-3 text-moises-gold"></i>
+                        <h3 class="text-2xl font-serif font-bold">A. Seja um Adotante</h3>
+                        <p class="text-sm opacity-80 mt-2">Garanta o Natal de uma criança</p>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6 text-center">Seu compromisso é doar um <strong>kit presente novo</strong> contendo:</p>
+                        <ul class="space-y-3 text-moises-navy font-medium mb-8 bg-gray-50 p-6 rounded-lg">
+                            <li class="flex items-center"><i class="fas fa-check text-moises-gold mr-3"></i> 1 Brinquedo</li>
+                            <li class="flex items-center"><i class="fas fa-check text-moises-gold mr-3"></i> 1 Conjunto de Roupa</li>
+                            <li class="flex items-center"><i class="fas fa-check text-moises-gold mr-3"></i> 1 Par de Calçados</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#doar" class="inline-block btn-gold px-8 py-3 rounded-full font-bold shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1">Quero Adotar!</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300 reveal delay-100">
+                    <div class="bg-moises-blue p-6 text-center text-white relative overflow-hidden">
+                        <div class="absolute inset-0 bg-pattern-dots opacity-10"></div>
+                        <i class="fas fa-hands-helping text-4xl mb-3 text-moises-gold"></i>
+                        <h3 class="text-2xl font-serif font-bold">B. Seja um Parceiro</h3>
+                        <p class="text-sm opacity-80 mt-2">Sorteios e Ações Contínuas</p>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6 text-center">Os parceiros divulgam atividades e colaboram com serviços ou produtos para sorteios e ações.</p>
+                        <ul class="space-y-3 text-gray-700 text-sm mb-8 bg-gray-50 p-6 rounded-lg">
+                            <li class="flex items-start"><i class="fas fa-ticket-alt text-moises-blue mt-1 mr-3"></i> <span><strong>Sorteios:</strong> Doação de brindes e produtos.</span></li>
+                            <li class="flex items-start"><i class="fas fa-bread-slice text-moises-blue mt-1 mr-3"></i> <span><strong>Alimentos:</strong> Para montagem de cestas básicas.</span></li>
+                            <li class="flex items-start"><i class="fas fa-briefcase text-moises-blue mt-1 mr-3"></i> <span><strong>Serviços:</strong> Divulgação e apoio logístico.</span></li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#doar" class="inline-block border-2 border-moises-blue text-moises-blue px-8 py-3 rounded-full font-bold hover:bg-moises-blue hover:text-white transition-colors">Quero Ser Parceiro</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-serif font-bold text-moises-navy">Perguntas Frequentes</h2>
+            </div>
+            
+            <div class="space-y-4 reveal">
+                <div class="accordion-item border border-gray-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                    <button class="w-full flex justify-between items-center p-4 hover:bg-gray-50 transition-colors text-left font-bold text-moises-navy focus:outline-none" onclick="toggleAccordion(this)">
+                        Por que o nome Projeto Moisés?
+                        <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-600 px-4">
+                        <p class="py-4">Somos um projeto social e missionário de orientação cristã. A inspiração vem da Bíblia, pela história de Moisés, que foi salvo e "adotado" como príncipe.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-gray-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                    <button class="w-full flex justify-between items-center p-4 hover:bg-gray-50 transition-colors text-left font-bold text-moises-navy focus:outline-none" onclick="toggleAccordion(this)">
+                        Quem pode se cadastrar?
+                        <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-600 px-4">
+                        <p class="py-4">Crianças de <strong>0 a 12 anos</strong> que moram nas proximidades da Comunidade Cristã Hadash em Carapicuíba/SP e que fizeram o cadastro no período estipulado na igreja.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-gray-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                    <button class="w-full flex justify-between items-center p-4 hover:bg-gray-50 transition-colors text-left font-bold text-moises-navy focus:outline-none" onclick="toggleAccordion(this)">
+                        Qual a função do adotante?
+                        <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-600 px-4">
+                        <p class="py-4">O adotante é um parceiro essencial. Ele se compromete a doar um kit presente (roupa, calçado e brinquedo novos), no prazo estipulado (geralmente novembro), para a criança adotada.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-gray-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                    <button class="w-full flex justify-between items-center p-4 hover:bg-gray-50 transition-colors text-left font-bold text-moises-navy focus:outline-none" onclick="toggleAccordion(this)">
+                        Como é feita a entrega dos presentes?
+                        <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-600 px-4">
+                        <p class="py-4">A entrega é realizada no mês de dezembro, nos Cultos da Entrega, mediante senha. Os voluntários fazem a entrega e os adotantes podem participar para conhecer as crianças.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-gray-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                    <button class="w-full flex justify-between items-center p-4 hover:bg-gray-50 transition-colors text-left font-bold text-moises-navy focus:outline-none" onclick="toggleAccordion(this)">
+                        Os presentes são novos?
+                        <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-600 px-4">
+                        <p class="py-4">Sim, o Kit presente (roupa, calçado e brinquedo) deve ser novo. No entanto, também recebemos e repassamos outras doações em bom estado (roupas, alimentos, móveis) para as famílias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-moises-blue font-bold tracking-widest text-sm uppercase">Momentos</span>
+                    <h2 class="text-4xl font-serif font-bold text-moises-navy mt-2">Nossa Galeria</h2>
+                </div>
+                <a href="https://instagram.com/projetomoises" target="_blank" class="text-moises-gold hover:text-moises-navy transition-colors mt-4 md:mt-0">
+                    <i class="fab fa-instagram text-xl mr-2"></i> Veja mais no Instagram
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p1.jpg" alt="Projeto Moisés - Momento 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-white font-bold">Alegria e Esperança</p>
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p2.jpg" alt="Projeto Moisés - Momento 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p3.jpg" alt="Projeto Moisés - Momento 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p4.png" alt="Projeto Moisés - Momento 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p5.jpg" alt="Projeto Moisés - Momento 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="relative rounded-xl overflow-hidden group reveal h-72">
+                    <img src="p6.jpg" alt="Projeto Moisés - Momento 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="doar" class="py-24 bg-moises-navy relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-moises-blue opacity-20 rounded-full filter blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-moises-gold opacity-10 rounded-full filter blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto glass-dark rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl reveal">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Seja um Instrumento de Benção</h2>
+                    <p class="text-gray-300 text-lg">Sua contribuição mantém nossas portas abertas e o evangelho vivo na comunidade. Doe qualquer valor.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white rounded-xl p-6 text-center">
+                        <h3 class="text-moises-navy font-bold text-xl mb-4">Doação via PIX (QR Code)</h3>
+                        
+                        <div class="w-56 h-auto bg-white mx-auto mb-4 border-4 border-moises-blue p-2 rounded relative group">
+                            <img src="qrcode-pix.jpg" alt="QR Code PIX" class="w-full h-full object-cover">
+                            
+                        </div>
+
+                        <div class="bg-gray-100 p-3 rounded-lg flex flex-col items-center border border-gray-200 mb-4">
+                            <span class="text-xs text-gray-500 mb-1">Chave Pix (Celular)</span>
+                            <div class="flex items-center gap-2">
+                                <span id="pix-key" class="text-lg text-moises-navy font-bold font-mono">+5511913012470</span>
+                                <button onclick="copyPix()" class="text-moises-blue hover:text-moises-gold transition-colors" title="Copiar Chave">
+                                    <i class="far fa-copy text-xl"></i>
+                                </button>
+                            </div>
+                            <span class="text-xs text-gray-500 mt-2">Favorecido: Comunidade Cristã Hadash</span>
+                        </div>
+                    </div>
+
+                    <div class="text-white space-y-6">
+                        <div class="bg-white/5 p-6 rounded-lg border border-white/10">
+                            <h3 class="text-moises-gold font-bold text-xl mb-4 flex items-center">
+                                <i class="fas fa-university mr-3"></i> Dados Institucionais
+                            </h3>
+                            <div class="space-y-2 text-gray-300 font-light">
+                                <p><strong class="text-white">Banco:</strong> Itaú Unibanco S.A.</p>
+                                <p><strong class="text-white">Favorecido:</strong> Comunidade Cristã Hadash</p>
+                                <p><strong class="text-white">CNPJ:</strong> 10.469.497/0001-45</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center md:text-left">
+                            <p class="text-sm text-gray-400 italic">
+                                "Cada um contribua segundo propôs no seu coração; não com tristeza, ou por necessidade; porque Deus ama ao que dá com alegria."
+                                <br><span class="text-moises-gold not-italic mt-1 block">- 2 Coríntios 9:7</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato-cta" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-moises-navy mb-6">Fale Conosco</h2>
+                <p class="text-gray-600 text-lg mb-8">Entre em contato para tirar dúvidas, agendar visitas ou saber mais sobre como adotar.</p>
+
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <a href="https://wa.me/5500900000000" class="btn-gold px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl flex items-center justify-center gap-3">
+                        <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
+                    </a>
+                    <a href="mailto:contato@projetomoises.org" class="bg-white border-2 border-moises-navy text-moises-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-moises-navy hover:text-white transition-all flex items-center justify-center gap-3">
+                        <i class="far fa-envelope text-2xl"></i> Enviar E-mail
+                    </a>
+                </div>
+                
+                <div class="mt-10 pt-10 border-t border-gray-200">
+                    <p class="text-moises-gold font-bold mb-2">Visite a Comunidade Cristã Hadash:</p>
+                    <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-moises-blue"></i> Estrada do Jacarandá, 1195 - Carapicuíba/SP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="bg-gray-900 text-white pt-10 pb-10 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-moises-gold rounded-full flex items-center justify-center text-moises-navy font-bold">M</div>
+                    <span class="font-serif text-xl font-bold">Projeto Moisés</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://instagram.com/projetomoises" target="_blank" class="text-gray-400 hover:text-moises-gold transition-colors flex items-center gap-2">
+                        <i class="fab fa-instagram text-xl"></i> @projetomoises
+                    </a>
+                    <a href="https://facebook.com/oprojetomoises" target="_blank" class="text-gray-400 hover:text-moises-gold transition-colors flex items-center gap-2">
+                        <i class="fab fa-facebook text-xl"></i> @oprojetomoises
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Projeto Moisés - Comunidade Cristã Hadash. Todos os direitos reservados.</p>
+                <p class="mt-2">Feito com <i class="fas fa-heart text-red-500 mx-1"></i> e Fé.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('bg-moises-navy', 'shadow-md', 'py-2');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-4');
+                navbar.classList.remove('bg-moises-navy', 'shadow-md', 'py-2');
+            }
+        });
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        function copyPix() {
+            const pixKey = document.getElementById('pix-key').innerText;
+            
+            const tempInput = document.createElement('input');
+            tempInput.value = pixKey;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const btn = document.querySelector('button[onclick="copyPix()"]');
+            const originalHtml = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            btn.classList.add('text-green-400');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.classList.remove('text-green-400');
+            }, 2000);
+        }
+
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+            
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

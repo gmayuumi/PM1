@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Moisés - Adote uma Criança neste Natal</title>
-    <meta name="description" content="Projeto Moisés: Um gesto de amor ao próximo que transforma vidas em Carapicuíba/SP. Atendemos crianças de 0 a 12 anos.">
+    <meta name="description" content="Projeto Moisés: Um gesto de amor ao próximo que transforma vidas em Carapicuíba/SP. Atendemos crianças de 0 a 10 anos.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -30,7 +30,6 @@
                         sans: ['"Lato"', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.7)), url('https://images.pexels.com/photos/207891/pexels-photo-207891.jpeg')",
                         'parallax-quote': "linear-gradient(to right, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
                         'pattern-dots': "radial-gradient(#C5A059 1px, transparent 1px)",
                     },
@@ -166,8 +165,20 @@
         </div>
     </header>
 
-    <section class="relative h-screen flex items-center justify-center bg-hero-pattern parallax">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-moises-navy/90"></div>
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-3 w-full h-full z-0">
+            <div class="relative h-full w-full">
+                <img src="https://i.ibb.co/Ng6P1fgK/g1.jpg" alt="Background 1" class="w-full h-full object-cover">
+            </div>
+            <div class="relative h-full w-full hidden md:block">
+                <img src="https://i.ibb.co/3y1J9801/g2.jpg" alt="Background 2" class="w-full h-full object-cover">
+            </div>
+            <div class="relative h-full w-full hidden md:block">
+                <img src="https://i.ibb.co/PvZr4gpL/g3.jpg" alt="Background 3" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-moises-navy/70 via-moises-navy/50 to-moises-navy/90 z-0"></div>
         
         <div class="relative z-10 text-center px-6 max-w-4xl mx-auto reveal active">
             <div class="mb-4 text-moises-gold opacity-90">
@@ -195,7 +206,7 @@
             </div>
         </div>
         
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-70">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-70 z-10">
             <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </section>
@@ -205,12 +216,12 @@
             <div class="text-center p-6 reveal">
                 <i class="fas fa-child text-4xl text-moises-gold mb-4"></i>
                 <h3 class="text-2xl font-serif font-bold mb-2">Apoio à Infância</h3>
-                <p class="text-gray-400 text-sm">Cuidado integral para crianças de <strong>0 a 12 anos</strong>.</p>
+                <p class="text-gray-400 text-sm">Cuidado integral para crianças de <strong>0 a 10 anos</strong>.</p>
             </div>
             <div class="text-center p-6 reveal border-l-0 md:border-l border-gray-800">
                 <i class="fas fa-hand-holding-heart text-4xl text-moises-gold mb-4"></i>
                 <h3 class="text-2xl font-serif font-bold mb-2">Ações Sociais</h3>
-                <p class="text-gray-400 text-sm">Distribuição de alimentos, sorteios e kits presentes.</p>
+                <p class="text-gray-400 text-sm">Distribuição de alimentos, doações e kits presentes.</p>
             </div>
             <div class="text-center p-6 reveal border-l-0 md:border-l border-gray-800">
                 <i class="fas fa-church text-4xl text-moises-gold mb-4"></i>
@@ -230,12 +241,12 @@
 
                 <div class="w-full lg:w-1/2 reveal">
                     <span class="text-moises-blue font-bold tracking-widest text-sm uppercase mb-2 block">Quem Somos</span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-moises-navy mb-6">Transformando Vidas desde 2018</h2>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-moises-navy mb-6">Diversos tipos de doações</h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        O Projeto Moisés é uma <strong>iniciativa social e missionária</strong> da <strong>Comunidade Cristã Hadash</strong>, nascida na cidade de Carapicuíba, São Paulo.
+                        O Projeto Moisés é uma <strong>iniciativa social e missionária</strong> da <strong>Comunidade Cristã Hadash</strong>, nascida em 2019 na cidade de Carapicuíba, São Paulo.
                     </p>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        Atendemos crianças carentes de <strong>0 a 12 anos</strong>. Inspirado na história bíblica de Moisés, nosso propósito é levar esperança e dignidade. Além da entrega de presentes, realizamos sorteios, entrega de alimentos e ações missionárias ao longo do ano.
+                        Atendemos crianças carentes de <strong>0 a 10 anos</strong>. Inspirado na história bíblica de Moisés, nosso propósito é levar esperança e dignidade. Além da entrega de presentes, realizamos doações, entrega de alimentos e ações missionárias ao longo do ano.
                     </p>
                     
                     <div class="bg-moises-cream p-6 rounded-lg border-l-4 border-moises-gold mt-6">
@@ -279,7 +290,7 @@
             <div class="text-center mb-16 reveal">
                 <span class="text-moises-gold font-bold tracking-widest text-sm uppercase">Processo de Adoção</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-moises-navy mt-2">O Ciclo da Esperança</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">O projeto opera em fases: cadastro, ações contínuas (sorteios e alimentos) e a grande entrega em dezembro.</p>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">O projeto opera em fases: cadastro, ações contínuas (doações e alimentos) e a grande entrega em dezembro.</p>
             </div>
 
             <div class="relative max-w-4xl mx-auto">
@@ -289,7 +300,7 @@
                     <div class="w-full md:w-5/12 text-center md:text-right order-2 md:order-1 mt-4 md:mt-0 px-4 md:px-0">
                         <span class="text-moises-gold font-bold text-xl block">1. Cadastro e Ações</span>
                         <h3 class="font-serif font-bold text-lg text-moises-navy">Primeira Fase</h3>
-                        <p class="text-gray-600 text-sm mt-2">As crianças (0 a 12 anos) são cadastradas na igreja. Em seguida, realizamos ações como sorteios, entrega de alimentos e atividades missionárias.</p>
+                        <p class="text-gray-600 text-sm mt-2">As crianças (0 a 10 anos) são cadastradas na igreja. Em seguida, realizamos ações como doações, entrega de alimentos e atividades missionárias.</p>
                     </div>
                     <div class="w-8 h-8 bg-moises-gold rounded-full border-4 border-white shadow-lg z-10 order-1 md:order-2 mx-auto flex items-center justify-center text-xs text-white font-bold"><i class="fas fa-file-alt"></i></div>
                     <div class="hidden md:block md:w-5/12 order-3"></div>
@@ -324,7 +335,7 @@
                 <span class="text-moises-blue font-bold tracking-widest text-sm uppercase">Participe</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-moises-navy mt-2">Como Você Pode Fazer a Diferença</h2>
                 <div class="w-24 h-1 bg-moises-gold mx-auto mt-4 rounded-full"></div>
-                <p class="text-gray-600 mt-4">Você pode ajudar sendo um adotante ou um parceiro nos sorteios e doações.</p>
+                <p class="text-gray-600 mt-4">Você pode ajudar sendo um adotante ou um parceiro nas doações.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
@@ -353,12 +364,12 @@
                         <div class="absolute inset-0 bg-pattern-dots opacity-10"></div>
                         <i class="fas fa-hands-helping text-4xl mb-3 text-moises-gold"></i>
                         <h3 class="text-2xl font-serif font-bold">B. Seja um Parceiro</h3>
-                        <p class="text-sm opacity-80 mt-2">Sorteios e Ações Contínuas</p>
+                        <p class="text-sm opacity-80 mt-2">Doações e Ações Contínuas</p>
                     </div>
                     <div class="p-8">
-                        <p class="text-gray-600 mb-6 text-center">Os parceiros divulgam atividades e colaboram com serviços ou produtos para sorteios e ações.</p>
+                        <p class="text-gray-600 mb-6 text-center">Os parceiros divulgam atividades e colaboram com serviços ou produtos para doações e ações.</p>
                         <ul class="space-y-3 text-gray-700 text-sm mb-8 bg-gray-50 p-6 rounded-lg">
-                            <li class="flex items-start"><i class="fas fa-ticket-alt text-moises-blue mt-1 mr-3"></i> <span><strong>Sorteios:</strong> Doação de brindes e produtos.</span></li>
+                            <li class="flex items-start"><i class="fas fa-ticket-alt text-moises-blue mt-1 mr-3"></i> <span><strong>Doações:</strong> Doação de brindes e produtos.</span></li>
                             <li class="flex items-start"><i class="fas fa-bread-slice text-moises-blue mt-1 mr-3"></i> <span><strong>Alimentos:</strong> Para montagem de cestas básicas.</span></li>
                             <li class="flex items-start"><i class="fas fa-briefcase text-moises-blue mt-1 mr-3"></i> <span><strong>Serviços:</strong> Divulgação e apoio logístico.</span></li>
                         </ul>
@@ -394,7 +405,7 @@
                         <i class="fas fa-chevron-down text-moises-gold transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-white text-gray-600 px-4">
-                        <p class="py-4">Crianças de <strong>0 a 12 anos</strong> que moram nas proximidades da Comunidade Cristã Hadash em Carapicuíba/SP e que fizeram o cadastro no período estipulado na igreja.</p>
+                        <p class="py-4">Crianças de <strong>0 a 10 anos</strong> que moram nas proximidades da Comunidade Cristã Hadash em Carapicuíba/SP e que fizeram o cadastro no período estipulado na igreja.</p>
                     </div>
                 </div>
 
@@ -486,7 +497,6 @@
                         
                         <div class="w-56 h-auto bg-white mx-auto mb-4 border-4 border-moises-blue p-2 rounded relative group">
                             <img src="qrcode-pix.jpg" alt="QR Code PIX" class="w-full h-full object-cover">
-                            
                         </div>
 
                         <div class="bg-gray-100 p-3 rounded-lg flex flex-col items-center border border-gray-200 mb-4">

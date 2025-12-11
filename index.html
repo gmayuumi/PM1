@@ -132,7 +132,7 @@
 
     <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
+            <a href="#" onclick="scrollToSection(event, 'top')" class="flex items-center gap-2 group">
                 <div class="w-10 h-10 bg-moises-gold rounded-full flex items-center justify-center text-moises-navy font-bold text-xl shadow-lg group-hover:bg-white transition-colors">
                     M
                 </div>
@@ -143,12 +143,12 @@
             </a>
 
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
-                <a href="#sobre" class="hover:text-moises-gold transition-colors">SOBRE</a>
-                <a href="#como-funciona" class="hover:text-moises-gold transition-colors">COMO FUNCIONA</a>
-                <a href="#parceiro" class="hover:text-moises-gold transition-colors">SEJA PARCEIRO</a>
-                <a href="#galeria" class="hover:text-moises-gold transition-colors">GALERIA</a>
-                <a href="#contato" class="hover:text-moises-gold transition-colors">CONTATO</a>
-                <a href="#doar" class="btn-gold px-6 py-2 rounded-full font-semibold shadow-lg">QUERO DOAR</a>
+                <a href="#" onclick="scrollToSection(event, 'sobre')" class="hover:text-moises-gold transition-colors">SOBRE</a>
+                <a href="#" onclick="scrollToSection(event, 'como-funciona')" class="hover:text-moises-gold transition-colors">COMO FUNCIONA</a>
+                <a href="#" onclick="scrollToSection(event, 'parceiro')" class="hover:text-moises-gold transition-colors">SEJA PARCEIRO</a>
+                <a href="#" onclick="scrollToSection(event, 'galeria')" class="hover:text-moises-gold transition-colors">GALERIA</a>
+                <a href="#" onclick="scrollToSection(event, 'contato')" class="hover:text-moises-gold transition-colors">CONTATO</a>
+                <a href="#" onclick="scrollToSection(event, 'doar')" class="btn-gold px-6 py-2 rounded-full font-semibold shadow-lg">QUERO DOAR</a>
             </nav>
 
             <button id="mobile-btn" class="md:hidden text-2xl focus:outline-none">
@@ -158,17 +158,17 @@
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-moises-navy text-white py-6 px-6 shadow-xl border-t border-gray-800">
             <div class="flex flex-col space-y-4 text-center">
-                <a href="#sobre" class="py-2 border-b border-gray-700 hover:text-moises-gold">SOBRE</a>
-                <a href="#como-funciona" class="py-2 border-b border-gray-700 hover:text-moises-gold">COMO FUNCIONA</a>
-                <a href="#parceiro" class="py-2 border-b border-gray-700 hover:text-moises-gold">SEJA PARCEIRO</a>
-                <a href="#galeria" class="py-2 border-b border-gray-700 hover:text-moises-gold">GALERIA</a>
-                <a href="#contato" class="py-2 border-b border-gray-700 hover:text-moises-gold">CONTATO</a>
-                <a href="#doar" class="btn-gold py-3 rounded mt-2">QUERO DOAR</a>
+                <a href="#" onclick="scrollToSection(event, 'sobre')" class="py-2 border-b border-gray-700 hover:text-moises-gold">SOBRE</a>
+                <a href="#" onclick="scrollToSection(event, 'como-funciona')" class="py-2 border-b border-gray-700 hover:text-moises-gold">COMO FUNCIONA</a>
+                <a href="#" onclick="scrollToSection(event, 'parceiro')" class="py-2 border-b border-gray-700 hover:text-moises-gold">SEJA PARCEIRO</a>
+                <a href="#" onclick="scrollToSection(event, 'galeria')" class="py-2 border-b border-gray-700 hover:text-moises-gold">GALERIA</a>
+                <a href="#" onclick="scrollToSection(event, 'contato')" class="py-2 border-b border-gray-700 hover:text-moises-gold">CONTATO</a>
+                <a href="#" onclick="scrollToSection(event, 'doar')" class="btn-gold py-3 rounded mt-2">QUERO DOAR</a>
             </div>
         </div>
     </header>
 
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="top" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-3 w-full h-full z-0">
             <div class="relative h-full w-full">
                 <img src="https://i.ibb.co/Ng6P1fgK/g1.jpg" alt="Background 1" class="w-full h-full object-cover">
@@ -200,10 +200,10 @@
                 Um gesto de amor ao próximo que transforma vidas em Carapicuíba/SP. Seja um instrumento de Deus na vida de um pequeno.
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#doar" class="btn-gold px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
+                <a href="#" onclick="scrollToSection(event, 'doar')" class="btn-gold px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
                     Quero Adotar uma Criança!
                 </a>
-                <a href="#como-funciona" class="px-8 py-4 rounded-full border border-white text-white hover:bg-white hover:text-moises-navy font-semibold transition-all">
+                <a href="#" onclick="scrollToSection(event, 'como-funciona')" class="px-8 py-4 rounded-full border border-white text-white hover:bg-white hover:text-moises-navy font-semibold transition-all">
                     Saiba Como Ajudar
                 </a>
             </div>
@@ -357,7 +357,7 @@
                             <li class="flex items-center"><i class="fas fa-check text-moises-gold mr-3"></i> 1 Par de Calçados</li>
                         </ul>
                         <div class="text-center">
-                            <a href="#doar" class="inline-block btn-gold px-8 py-3 rounded-full font-bold shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1">Quero Adotar!</a>
+                            <a href="#" onclick="scrollToSection(event, 'doar')" class="inline-block btn-gold px-8 py-3 rounded-full font-bold shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1">Quero Adotar!</a>
                         </div>
                     </div>
                 </div>
@@ -377,7 +377,7 @@
                             <li class="flex items-start"><i class="fas fa-briefcase text-moises-blue mt-1 mr-3"></i> <span><strong>Serviços:</strong> Divulgação e apoio logístico.</span></li>
                         </ul>
                         <div class="text-center">
-                            <a href="#doar" class="inline-block border-2 border-moises-blue text-moises-blue px-8 py-3 rounded-full font-bold hover:bg-moises-blue hover:text-white transition-colors">Quero Ser Parceiro</a>
+                            <a href="#" onclick="scrollToSection(event, 'doar')" class="inline-block border-2 border-moises-blue text-moises-blue px-8 py-3 rounded-full font-bold hover:bg-moises-blue hover:text-white transition-colors">Quero Ser Parceiro</a>
                         </div>
                     </div>
                 </div>
@@ -659,6 +659,19 @@
                     otherItem.classList.remove('active');
                 }
             });
+        }
+
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
         }
     </script>
 </body>
